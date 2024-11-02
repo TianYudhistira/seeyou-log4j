@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration status="WARN">
+
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %m%n"/>
+        </Console>
+
+        <RollingFile name="stream" fileName="${catalina.home}/logs/apps/stream.log"
+                     filePattern="${catalina.home}/ziplog/stream-%d{yyyy-MM-dd}-%i.log.gz">
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %m%n"/>
+            <Filters>
+                <Filter type="StreamFilter"/>
+            </Filters>
+        </RollingFile>
+
+        <RollingFile name="db" fileName="${catalina.home}/logs/apps/db.log"
+                     filePattern="${catalina.home}/ziplog/db-%d{yyyy-MM-dd}-%i.log.gz">
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %m%n"/>
+            <Filters>
+                <Filter type="DBFilter"/>
+            </Filters>
+        </RollingFile>
+
+        <RollingFile name="dberror" fileName="${catalina.home}/logs/apps/db-error.log"
+                     filePattern="${catalina.home}/ziplog/db-error-%d{yyyy-MM-dd}-%i.log.gz">
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %m%n"/>
+            <Filters>
+                <Filter type="DBErrorFilter"/>
+            </Filters>
+        </RollingFile>
+
+        <RollingFile name="security" fileName="${catalina.home}/logs/apps/security-error.log"
+                     filePattern="${catalina.home}/ziplog/security-error-%d{yyyy-MM-dd}-%i.log.gz">
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %m%n"/>
+            <Filters>
+                <Filter type="SecurityErrorFilter"/>
+            </Filters>
+        </RollingFile>
+
+        <RollingFile name="debug" fileName="${catalina.home}/logs/apps/debug.log"
+                     filePattern="${catalina.home}/ziplog/debug-%d{yyyy-MM-dd}-%i.log.gz">
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %m%n"/>
+            <Filters>
+                <LevelRangeFilter levelMin="DEBUG" levelMax="DEBUG" acceptOnMatch="true"/>
+            </Filters>
+        </RollingFile>
+
+        <RollingFile name="error" fileName="${catalina.home}/logs/apps/error.log"
+                     filePattern="${catalina.home}/ziplog/error-%d{yyyy-MM-dd}-%i.log.gz">
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %m%n"/>
+            <Filters>
+                <LevelRangeFilter levelMin="ERROR" levelMax="ERROR" acceptOnMatch="true"/>
+            </Filters>
+        </RollingFile>
+
+        <RollingFile name="trace" fileName="${catalina.home}/logs/apps/trace.log"
+                     filePattern="${catalina.home}/ziplog/trace-%d{yyyy-MM-dd}-%i.log.gz">
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %m%n"/>
+            <Filters>
+                <LevelRangeFilter levelMin="TRACE" levelMax="TRACE" acceptOnMatch="true"/>
+            </Filters>
+        </RollingFile>
+
+        <RollingFile name="warn" fileName="${catalina.home}/logs/apps/warn.log"
+                     filePattern="${catalina.home}/ziplog/warn-%d{yyyy-MM-dd}-%i.log.gz">
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %m%n"/>
+            <Filters>
+                <LevelRangeFilter levelMin="WARN" levelMax="WARN" acceptOnMatch="true"/>
+            </Filters>
+        </RollingFile>
+
+        <RollingFile name="fatal" fileName="${catalina.home}/logs/apps/fatal.log"
+                     filePattern="${catalina.home}/ziplog/fatal-%d{yyyy-MM-dd}-%i.log.gz">
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %m%n"/>
+            <Filters>
+                <LevelRangeFilter levelMin="FATAL" levelMax="FATAL" acceptOnMatch="true"/>
+            </Filters>
+        </RollingFile>
+
+        <RollingFile name="info" fileName="${catalina.home}/logs/apps/info.log"
+                     filePattern="${catalina.home}/ziplog/info-%d{yyyy-MM-dd}-%i.log.gz">
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %m%n"/>
+            <Filters>
+                <LevelRangeFilter levelMin="INFO" levelMax="INFO" acceptOnMatch="true"/>
+            </Filters>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="ALL">
+            <AppenderRef ref="db"/>
+            <AppenderRef ref="dberror"/>
+            <AppenderRef ref="security"/>
+            <AppenderRef ref="stream"/>
+            <AppenderRef ref="debug"/>
+            <AppenderRef ref="error"/>
+            <AppenderRef ref="trace"/>
+            <AppenderRef ref="warn"/>
+            <AppenderRef ref="info"/>
+            <AppenderRef ref="fatal"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
