@@ -24,7 +24,7 @@ To get started with this project, follow these steps:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/TianYudhistira/seeyou-log4j.git
+   git clone https://github.com/septianyudhistira/seeyou-log4j.git
 
 
 ## 📘 Documentation
